@@ -1,0 +1,8 @@
+# Create .gitignore file
+@"
+node_modules/
+dist/
+.env
+.env.local
+config.json
+"@ | Out-File -Encoding UTF8 ".gitignore"
