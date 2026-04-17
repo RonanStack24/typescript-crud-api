@@ -15,8 +15,10 @@ export function errorHandler(
   }
 
   if (err instanceof Error) {
-    // Standard Error object
-    return res.status(500).json({ message: err.message });
+    // Standard Error object - check if it's a 404
+    const is404 = err.message.toLowerCase().endsWith("not found");
+    const statusCode = is404 ? 404 : 500;
+    return res.status(statusCode).json({ message: err.message });
   }
 
   // Fallback
